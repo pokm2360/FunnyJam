@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
+// Styled-components로 스타일 정의
 const Container = styled.div`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
@@ -29,12 +31,34 @@ const Card = styled.div`
   border-radius: 8px;
   cursor: pointer;
   transition: transform 0.3s, background-color 0.3s;
+  transform-style: preserve-3d;
   transform: ${props => (props.flipped ? 'rotateY(180deg)' : 'rotateY(0)')};
 `;
 
+const CardInner = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  backface-visibility: hidden;
+  position: absolute;
+`;
+
+const CardFront = styled(CardInner)`
+  background-color: #4caf50;
+`;
+
+const CardBack = styled(CardInner)`
+  background-color: #ffeb3b;
+  transform: rotateY(180deg);
+`;
+
 const MatchCounter = styled.div`
-  margin-top: 20px;
+  margin-bottom: 20px;
   font-size: 18px;
+  position: absolute;
+  top: 20px;
 `;
 
 const CardGame = () => {
@@ -65,6 +89,7 @@ const CardGame = () => {
 
   return (
     <Container>
+      <MatchCounter>Matches found: {matchedCards.length}</MatchCounter>
       <Grid>
         {cards.map((card, index) => (
           <Card
@@ -73,11 +98,11 @@ const CardGame = () => {
             matched={matchedCards.includes(card)}
             onClick={() => handleCardClick(index)}
           >
-            {flippedCards.includes(index) || matchedCards.includes(card) ? card : "?"}
+            <CardFront>{flippedCards.includes(index) || matchedCards.includes(card) ? card : "?"}</CardFront>
+            <CardBack>{card}</CardBack>
           </Card>
         ))}
       </Grid>
-      <MatchCounter>Matches found: {matchedCards.length}</MatchCounter>
     </Container>
   );
 };
