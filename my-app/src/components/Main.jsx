@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
 
 // 스타일 컴포넌트 정의
 const Container = styled.div`
@@ -7,16 +8,50 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: Arial, sans-serif;
+  background-color: black;
+  overflow: hidden;
 `;
 
 const Banner = styled.div`
-  background: grey;
-  width: 100%;
-  height: 150px;
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  height: 400px;
+  position: relative;
+  padding: 35px 0;
+`;
+
+const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
+  background-color: ${props => props.bgColor || 'white'};
+  color: black;
+  font-size: 1.5em;
+  width: 100px;
+`;
+
+const StaticTextWrapper = styled.div`
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+`;
+
+const StaticText = styled.div`
+  background-color: ${props => props.bgColor || 'white'};
+  color: white;
+  font-size: 1em;
+  padding: 20px;
+  margin: 2px;
+`;
+
+const LangToggle = styled.div`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
 `;
 
 const SectionWrapper = styled.div`
@@ -65,11 +100,6 @@ const FooterText = styled.p`
   color: #666;
 `;
 
-const LangToggle = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-`;
 
 const Footer = styled.div`
   background: lightgrey;
@@ -113,7 +143,7 @@ const Section = ({ bgColor, bgImage, reverse, color, children, link }) => {
       onMouseLeave={handleMouseLeave}
     >
       <Background bgImage={bgImage} reverse={reverse} />
-      <HoverButton href={link} show={hovered}>확인하기</HoverButton>
+      <HoverButton href={link} show={hovered}>보러가기</HoverButton>
       <Content color={color} reverse={reverse}>
         {children}
       </Content>
@@ -125,16 +155,24 @@ const Main = () => {
   return (
     <Container>
       <Banner>
-        <div>
-          <Title>도파민 잔뜩</Title>
-          <Text>I WANT FUNNY</Text>
-          <Text>클릭하면 밑의 영역으로 화면전환</Text>
-          <Text>컨퍼로 키워드 찾기 가능????</Text>
-        </div>
-        <LangToggle>
-          <span>KOR</span> | <span>ENG</span>
-        </LangToggle>
+        {[
+          'Y', 'O', 'U', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+          'W', 'A', 'N', 'T', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+          'S', 'O', 'M', 'E', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+          'F', 'U', 'N', 'N', 'Y', '', '', '', '', '', '', '', '', '', '', '', '', ''
+        ].map((text, index) => (
+          <Box key={index} bgColor={index % 2 === 0 ? '#e0e0e0' : '#cfcfcf'}>
+            {text}
+          </Box>
+        ))}
+        <StaticTextWrapper>
+        <StaticText bgColor="#32CD32">KIM KYUNG HWAN</StaticText>
+        <StaticText bgColor="#00FF00">KIM JI YEON</StaticText>
+      </StaticTextWrapper>
       </Banner>
+      <LangToggle>
+        <span>KOR</span> | <span>ENG</span>
+      </LangToggle>
       <Section
         bgColor="#FFEBEE"
         bgImage="https://placehold.co/800x600"
