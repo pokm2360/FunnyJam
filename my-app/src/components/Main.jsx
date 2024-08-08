@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
-
+import { Link } from 'react-router-dom';
 
 // 스타일 컴포넌트 정의
 const Container = styled.div`
@@ -173,6 +173,22 @@ const Main = () => {
       <LangToggle>
         <span>KOR</span> | <span>ENG</span>
       </LangToggle>
+
+      <Section
+        reverse
+        bgColor="#E1F5FE"
+        bgImage="/img/main_img/main_goodwords.JPG"
+        color="#03A9F4"
+        link="/encouragement"
+      >
+        <Title>응원이 필요하신가요?</Title>
+        <Text>저희가 따뜻한 말을 건네드릴게요!</Text>
+        <Text>힘들 땐 잠시 쉬어가세요.</Text>
+        <Text>포기하지 마세요, 좋은 일이 있을 거예요!</Text>
+        <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 1일<br />사용된 기능: <br />React | react-router-dom | styled-components</FooterText>
+      </Section>
+
+
       <Section
         bgColor="#FFEBEE"
         bgImage="https://placehold.co/800x600"
