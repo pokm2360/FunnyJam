@@ -191,16 +191,16 @@ const Main = () => {
 
       <Section
         bgColor="#FFEBEE"
-        bgImage="https://placehold.co/800x600"
+        bgImage="/img/main_img/MemoryGame.png"
         color="#FF6347"
-        link="#clover"
+        link="/MemoryGame"
       >
-        <Title>네잎클로버 찾기</Title>
-        <Text>hover 기능으로 찾아내는 컴포넌트 입니다.</Text>
-        <Text>마우스를 이용해서 네잎클로버를 찾아보세요!</Text>
-        <Text>확대되는 클로버들 중에서 행운의 네잎클로버를 찾아야 합니다.</Text>
-        <Text>제한시간이 있으며, 4레벨로 이루어진 머..사이트? 그런거 입니다.</Text>
-        <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CANVASS</FooterText>
+        <Title>이미지 카드 짝 맞추기</Title>
+        <Text>이미지를 외워서 카드를 맞춰보세요!</Text>
+        <Text>이미지는 수정될 예정입니다(아마도)</Text>
+        <Text>5초동안 이미지의 위치를 외우고! 기억력을 테스트 하세요!</Text>
+        <Text>제한시간은 없으며,여러분이 재밌게 이용한다면 잇츠 오케이 입니다! </Text>
+        <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 2일<br />사용된 기능: <br />React | react-router-dom | styled-components</FooterText>
       </Section>
       <Section
         reverse
