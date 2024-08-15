@@ -39,12 +39,13 @@ const StaticTextWrapper = styled.div`
   display: flex;
 `;
 
-const StaticText = styled.div`
+const StaticText = styled(Link)`
   background-color: ${props => props.bgColor || 'white'};
   color: white;
   font-size: 1em;
   padding: 20px;
   margin: 2px;
+  text-decoration: none;
 `;
 
 const LangToggle = styled.div`
@@ -99,7 +100,6 @@ const FooterText = styled.p`
   font-size: 12px;
   color: #666;
 `;
-
 
 const Footer = styled.div`
   background: lightgrey;
@@ -158,7 +158,7 @@ const Main = () => {
         {[
           'Y', 'O', 'U', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
           'W', 'A', 'N', 'T', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
-          'S', 'O', 'M', 'E', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+          'S', 'O', 'M', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
           'F', 'U', 'N', 'N', 'Y', '', '', '', '', '', '', '', '', '', '', '', '', ''
         ].map((text, index) => (
           <Box key={index} bgColor={index % 2 === 0 ? '#e0e0e0' : '#cfcfcf'}>
@@ -166,9 +166,9 @@ const Main = () => {
           </Box>
         ))}
         <StaticTextWrapper>
-        <StaticText bgColor="#32CD32">KIM KYUNG HWAN</StaticText>
-        <StaticText bgColor="#00FF00">KIM JI YEON</StaticText>
-      </StaticTextWrapper>
+          <StaticText to="https://github.com/pokm2360" bgColor="#32CD32">KIM KYUNG HWAN</StaticText>
+          <StaticText to="https://github.com/JEONwhail" bgColor="#00FF00">KIM JI YEON</StaticText>
+        </StaticTextWrapper>
       </Banner>
       <LangToggle>
         <span>KOR</span> | <span>ENG</span>
