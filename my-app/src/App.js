@@ -7,6 +7,7 @@ import Clover from './components/Games/Clover';
 import Balloon from './components/Games/Balloon';
 import Curse from './components/Games/Curse';
 import Encouragement from './components/Encouragement';  
+import MemoryGame from './components/MemoryGame';
 import Form from './components/Games/MineSearch/Form';
 import MineSearch from './components/Games/MineSearch/MineSearch';
 
