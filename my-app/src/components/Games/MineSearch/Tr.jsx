@@ -6,7 +6,7 @@ function Tr({ rowIndex }) {
   const { tableData } = useContext(TableContext);
 
   return (
-      <tr>0
+      <tr>
         {tableData[0] && Array(tableData[0].length).fill().map((td, i) => 
         <Td rowIndex={rowIndex} cellIndex={i}/>)}; 
         {/* tableData가 0일때를 대비 */}
