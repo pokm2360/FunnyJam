@@ -8,8 +8,8 @@ import Balloon from './components/Games/Balloon';
 import Curse from './components/Games/Curse';
 import Encouragement from './components/Encouragement';  
 import MemoryGame from './components/MemoryGame';
-import Form from './components/Games/MineSearch/Form';
 import MineSearch from './components/Games/MineSearch/MineSearch';
+
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           <Route path="#curse" element={<Curse />} />
           <Route path="/encouragement" element={<Encouragement />} />
           <Route path="/minesearch" element={<MineSearch />} />
+          <Route path="/memorygame" element={<MemoryGame />} />
         </Routes>
       </BrowserRouter>
     </>

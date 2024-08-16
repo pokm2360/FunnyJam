@@ -8,7 +8,7 @@ function Tr({ rowIndex }) {
   return (
       <tr>
         {tableData[0] && Array(tableData[0].length).fill().map((td, i) => 
-        <Td rowIndex={rowIndex} cellIndex={i}/>)}; 
+        <Td rowIndex={rowIndex} cellIndex={i}/>)}
         {/* tableData가 0일때를 대비 */}
       </tr>
   );

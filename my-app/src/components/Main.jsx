@@ -247,6 +247,19 @@ const Main = () => {
         <Text>저희는 이용자들이 키보드 워리어가 되는걸 바라지 않아요...!</Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CSS</FooterText>
       </Section>
+      <Section
+        bgColor="#e2b8ec"
+        bgImage="https://placehold.co/800x600"
+        color="#ae32cd"
+        link="/minesearch"
+      >
+        <Title>지뢰 찾기</Title>
+        <Text>너무나 유명한 게임 중 하나!</Text>
+        <Text>심심할 때 하기 딱 좋은 게임! </Text>
+        <Text style={{ textDecoration: 'line-through'}}>만드는 데 좀 고생한 게임!</Text>
+        <Text>재미있게 즐겨보세요~</Text>
+        <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CANVASS</FooterText>
+      </Section>
       <Footer>
         <Text>만든사람 : 김경환, 김지연</Text>
         <Text>사용 기술: React | JS | 머...다 있겠지...</Text>

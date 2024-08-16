@@ -33,7 +33,7 @@ const initialState = {
 };
 
 const plantMine = (row, cell, mine) => {
-  console.log(row, cell, mine);
+  // console.log(row, cell, mine);
   const candidate = Array(row * cell).fill().map((arr, i) => {
     return i;
   });
@@ -57,7 +57,7 @@ const plantMine = (row, cell, mine) => {
     data[ver][hor] = CODE.MINE;
   }
 
-  console.log(data);
+  // console.log(data);
   return data;
 };
 
@@ -91,9 +91,9 @@ const reducer = (state, action) => {
       });
       const checked = [];
       let openedCount = 0;
-      console.log(tableData.length, tableData[0].length);
+      // console.log(tableData.length, tableData[0].length);
       const checkAround = (row, cell) => {
-        console.log(row, cell);
+        // console.log(row, cell);
         if (row < 0 || row >= tableData.length || cell < 0 || cell >= tableData[0].length) {
           return;
         } // 상하좌우 없는칸은 안 열기
@@ -145,7 +145,7 @@ const reducer = (state, action) => {
       checkAround(action.row, action.cell);
       let halted = false;
       let result = '';
-      console.log(state.data.row * state.data.cell - state.data.mine, state.openedCount, openedCount);
+      // console.log(state.data.row * state.data.cell - state.data.mine, state.openedCount, openedCount);
       if (state.data.row * state.data.cell - state.data.mine === state.openedCount + openedCount) { // 승리
         halted = true;
         result = `${state.timer}초만에 승리하셨습니다`;
@@ -158,17 +158,16 @@ const reducer = (state, action) => {
         result,
       };
     }
-    case CLICK_MINE:
-      const newTableData = state.tableData.map((row, rowIndex) => 
-        row.map((cell, cellIndex) => 
-          cell === CODE.MINE ? CODE.CLICKED_MINE : cell
-        )
-      );
+    case CLICK_MINE: {
+      const tableData = [...state.tableData];
+      tableData[action.row] = [...state.tableData[action.row]];
+      tableData[action.row][action.cell] = CODE.CLICKED_MINE;
       return {
         ...state,
-        tableData: newTableData,
-        halted: true, // 게임 종료
+        tableData,
+        halted: true,
       };
+    }
     case FLAG_CELL: {
       const tableData = [...state.tableData];
       tableData[action.row] = [...state.tableData[action.row]];
@@ -195,6 +194,7 @@ const reducer = (state, action) => {
         tableData,
       };
     }
+    
     case NORMALIZE_CELL: {
       const tableData = [...state.tableData];
       tableData[action.row] = [...state.tableData[action.row]];
