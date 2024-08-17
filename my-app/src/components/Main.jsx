@@ -220,17 +220,17 @@ const Main = () => {
       </Section>
       <Section
         bgColor="#E8F5E9"
-        bgImage="https://placehold.co/800x600"
+        bgImage="/img/main_img/BubbleComponent/bubble_hover.png"
         color="#32CD32"
-        link="#balloon"
+        link="/BubbleComponent"
       >
-        <Title>풍선 터트리기</Title>
-        <Text>click 기능으로 풍선을 많이 터트려보세요!</Text>
-        <Text>프론트앤드와 퍼블리셔의 작업물로.... </Text>
+        <Title>비눗방울 터트리기</Title>
+        <Text>Hover 기능으로 풍선을 많이 터트려보세요!</Text>
+        <Text>퍼블리셔를 맡은 사람이 스폰지밥을 좋아합니다!! </Text>
         <Text>랭킹은 없습니다.</Text>
-        <Text>하지만 무한으로 터트려지는 풍선!</Text>
-        <Text>스트레스 받을 때 미친듯한 클릭으로 한번 풀어보세용..ㅎ.ㅎ..</Text>
-        <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CANVASS</FooterText>
+        <Text>하지만 무한으로 터트려지는 비눗방울!</Text>
+        <Text>스트레스 받을 때 미친듯한 마우스로 한번 풀어보세용..ㅎ.ㅎ..</Text>
+        <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 1일<br />사용된 기능: React | JS | CANVASS</FooterText>
       </Section>
       <Section
         reverse
