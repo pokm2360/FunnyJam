@@ -205,17 +205,16 @@ const Main = () => {
       <Section
         reverse
         bgColor="#E3F2FD"
-        bgImage="https://placehold.co/800x600"
+        bgImage="/img/main_img/FeedEat.png"
         color="#4682B4"
-        link="#cloud"
+        link="/FeedEat"
       >
-        <Title>물멍?불멍? 저리 가라 구름멍</Title>
-        <Text>CSS가 주된 기능으로 애니메이션 컴포넌트 입니다.</Text>
-        <Text>가만히 앉아서 구름을 볼 수 있는 사이트입니다!</Text>
-        <Text>7가지 색상의 구름을 선택 할 수 있습니다.</Text>
-        <Text>다소 구름 모양이 맘에 안들 수도 있지만, 디자이너의 실력을 가지지 못한</Text>
+        <Title>밥먹는 최애캐릭터</Title>
+        <Text>개발자 2명이 좋아하는 캐릭터가 들어갔습니다.</Text>
+        <Text>케로로와 모코코의 먹이를 맥여주세요</Text>
+        <Text>디자인이 별로인건 저희도 알고 있습니다!!!!</Text>
         <Text>저희의 노력만 예쁘게 봐주셨으면 해요 😢</Text>
-        <Text>아님...만들어주세요...</Text>
+        <Text>참고 : https://fe-developers.kakaoent.com/2022/220830-simple-canvas-game/ </Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CSS</FooterText>
       </Section>
       <Section

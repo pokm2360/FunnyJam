@@ -10,6 +10,9 @@ import Encouragement from './components/Encouragement';
 import MemoryGame from './components/MemoryGame';
 import MineSearch from './components/Games/MineSearch/MineSearch';
 import BubbleComponent from './components/BubbleComponent';
+import FeedEat from './components/FeedEat';
+
+
 
 
 function App() {
@@ -27,6 +30,7 @@ function App() {
           <Route path="/minesearch" element={<MineSearch />} />
           <Route path="/memorygame" element={<MemoryGame />} />
           <Route path="/BubbleComponent" element={<BubbleComponent /> } />
+          <Route path="/FeedEat" element={ <FeedEat /> } />
         </Routes>
       </BrowserRouter>
     </>
