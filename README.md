@@ -37,6 +37,8 @@
 # 팀원소개
 ## 김경환
 #### https://github.com/pokm2360
+느낀점 쓰세여~~~
 
 ## 김지연
 #### https://github.com/JEONwhail
+나도..써야지.....
