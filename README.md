@@ -37,7 +37,7 @@
 # 팀원소개
 ## 김경환
 #### https://github.com/pokm2360
-느낀점 쓰세여~~~
+게임만들기는....어렵다....
 
 ## 김지연
 #### https://github.com/JEONwhail

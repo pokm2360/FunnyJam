@@ -234,21 +234,21 @@ const Main = () => {
       <Section
         reverse
         bgColor="#FFF9C4"
-        bgImage="https://placehold.co/800x600"
+        bgImage="/img/main_img/several.png"
         color="#FFD700"
-        link="#curse"
+        link="/yok"
       >
-        <Title>대신 욕해드립니다.</Title>
-        <Text>랜덤으로 욕이 들어간 문장이 나옵니다.....</Text>
-        <Text>적절한 욕을 찾지 못할 때?</Text>
-        <Text>이 사이트에서 랜덤으로 한번 욕을 들어보세요!</Text>
+        <Title>영어로 욕해드립니다.</Title>
+        <Text>랜덤으로 영어 욕이 나옵니다.....</Text>
+        <Text>어떤 영어 욕이 있는지 궁금할때?</Text>
+        <Text>이 사이트에서 랜덤으로 한번 욕을 살펴보세요!</Text>
         <Text>머....다른 나쁜 곳에서는 사용하지 마세요ㅜ</Text>
         <Text>저희는 이용자들이 키보드 워리어가 되는걸 바라지 않아요...!</Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CSS</FooterText>
       </Section>
       <Section
         bgColor="#e2b8ec"
-        bgImage="https://placehold.co/800x600"
+        bgImage="/img/main_img/minebg.png"
         color="#ae32cd"
         link="/minesearch"
       >
