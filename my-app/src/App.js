@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Main from './components/Main';
 import Encouragement from './components/Encouragement';  
 import MemoryGame from './components/MemoryGame';
-import MineSearch from './components/Games/MineSearch/MineSearch';
+import MineSearch from './components/MineSearch/MineSearch';
 import BubbleComponent from './components/BubbleComponent';
 import FeedEat from './components/FeedEat';
 import Yok from './components/Yok';

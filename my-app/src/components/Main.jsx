@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+
+// 파스텔 톤 색상 생성 함수
+const getRandomPastelColor = () => {
+  const base = Math.floor(Math.random() * 256);
+  const pastelColor = `rgb(${base + 170}, ${base + 200}, ${base + 230})`;
+  return pastelColor;
+};
 
 // 스타일 컴포넌트 정의
 const Container = styled.div`
@@ -13,23 +20,69 @@ const Container = styled.div`
 `;
 
 const Banner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+  position: relative;
+  perspective: 1000px; /* 3D 효과를 위한 원근감 설정 */
+`;
+
+const Card = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* 3D 변형 보존 */
+  transform: rotateY(${props => props.hovered ? '180deg' : '0deg'}); /* 카드 회전 효과 */
+  transition: transform 0.6s; /* 부드러운 변환 */
+`;
+
+const CardInner = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(18, 1fr);
   grid-template-rows: repeat(4, 1fr);
   gap: 2px;
-  height: 400px;
-  position: relative;
-  padding: 35px 0;
+  transform-style: preserve-3d; /* 3D 변형 보존 */
 `;
 
+const CardSide = styled.div`
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(18, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 2px;
+  border-radius: 5px;
+  backface-visibility: hidden; /* 뒷면 숨기기 */
+`;
+
+const CardFront = styled(CardSide)`
+  background-color: #000000;
+  color: white;
+`;
+
+const CardBack = styled(CardSide)`
+  background-color: #ccc;
+  color: black;
+  transform: rotateY(180deg); /* 뒷면 회전 */
+`;
+
+// Box 컴포넌트 추가
 const Box = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: ${props => props.bgColor || 'white'};
   color: black;
-  font-size: 1.5em;
+  font-size: 2em; 
+  font-weight: bold; 
   width: 100px;
+  height: 100px; /* 카드의 높이 설정 */
 `;
 
 const StaticTextWrapper = styled.div`
@@ -37,6 +90,7 @@ const StaticTextWrapper = styled.div`
   bottom: 20px;
   right: 20px;
   display: flex;
+  z-index: 10; /* 카드 애니메이션 위에 오도록 z-index 설정 */
 `;
 
 const StaticText = styled(Link)`
@@ -46,13 +100,7 @@ const StaticText = styled(Link)`
   padding: 20px;
   margin: 2px;
   text-decoration: none;
-`;
-
-const LangToggle = styled.div`
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  color: white;
+  border: 0.15rem solid #000;
 `;
 
 const SectionWrapper = styled.div`
@@ -73,8 +121,8 @@ const Background = styled.div`
   height: 100%;
   background: ${props => `url(${props.bgImage}) no-repeat center/cover`};
   clip-path: ${props => (props.reverse 
-    ? 'polygon(0 0, 66.67% 0, 33.33% 100%, 0 100%)'
-    : 'polygon(33.33% 0, 100% 0, 100% 100%, 66.67% 100%)'
+    ? 'polygon(0% 0, 75% 0, 65% 100%, 0% 100%)'
+    : 'polygon(40% 0, 100% 0, 100% 100%, 25% 100%)' 
   )};
 `;
 
@@ -152,27 +200,55 @@ const Section = ({ bgColor, bgImage, reverse, color, children, link }) => {
 };
 
 const Main = () => {
+  const [hovered, setHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setHovered(false);
+  };
+
   return (
     <Container>
-      <Banner>
-        {[
-          'Y', 'O', 'U', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
-          'W', 'A', 'N', 'T', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
-          'S', 'O', 'M', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
-          'F', 'U', 'N', 'N', 'Y', '', '', '', '', '', '', '', '', '', '', '', '', ''
-        ].map((text, index) => (
-          <Box key={index} bgColor={index % 2 === 0 ? '#e0e0e0' : '#cfcfcf'}>
-            {text}
-          </Box>
-        ))}
+      <Banner
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <Card hovered={hovered}>
+          <CardInner>
+            <CardFront>
+              {[
+                'Y', 'O', 'U', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+                'W', 'A', 'N', 'T', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+                'S', 'O', 'M', 'E', '', '', '', '', '', '', '', '', '', '', '', '', '', '', 
+                'F', 'U', 'N', 'N', 'Y', '?', '', '', '', '', '', '', '', '', '', '', '', ''
+              ].map((text, index) => (
+                <Box key={index} bgColor={getRandomPastelColor()}>
+                  {text}
+                </Box>
+              ))}
+            </CardFront>
+            <CardBack>
+              {[
+                '', '', '', '', '', '', '', '', '', '', '', '', '', 'Y', 'O', 'U', '', '', 
+                '', '', '', '', '', '', '', '', '', '', '', '', 'W', 'A', 'N', 'T', '', '', 
+                '', '', '', '', '', 'S', 'O', 'M', 'E', '😀', 'F', 'U', 'N', 'N', 'Y', '!!', '', '', 
+                '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', ''  
+              ].map((text, index) => (
+                <Box key={index} bgColor={getRandomPastelColor()}>
+                  {text}
+                </Box>
+              ))}
+            </CardBack>
+          </CardInner>
+        </Card>
         <StaticTextWrapper>
           <StaticText to="https://github.com/pokm2360" bgColor="#32CD32">KIM KYUNG HWAN</StaticText>
           <StaticText to="https://github.com/JEONwhail" bgColor="#00FF00">KIM JI YEON</StaticText>
         </StaticTextWrapper>
       </Banner>
-      <LangToggle>
-        <span>KOR</span> | <span>ENG</span>
-      </LangToggle>
 
       <Section
         reverse
@@ -188,7 +264,6 @@ const Main = () => {
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 1일<br />사용된 기능: <br />React | react-router-dom | styled-components</FooterText>
       </Section>
 
-
       <Section
         bgColor="#FFEBEE"
         bgImage="/img/main_img/MemoryGame.png"
@@ -202,6 +277,7 @@ const Main = () => {
         <Text>제한시간은 없으며,여러분이 재밌게 이용한다면 잇츠 오케이 입니다! </Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 2일<br />사용된 기능: <br />React | react-router-dom | styled-components</FooterText>
       </Section>
+
       <Section
         reverse
         bgColor="#E3F2FD"
@@ -214,9 +290,11 @@ const Main = () => {
         <Text>케로로와 모코코의 먹이를 맥여주세요</Text>
         <Text>디자인이 별로인건 저희도 알고 있습니다!!!!</Text>
         <Text>저희의 노력만 예쁘게 봐주셨으면 해요 😢</Text>
-        <Text>참고 : https://fe-developers.kakaoent.com/2022/220830-simple-canvas-game/ </Text>
+        <Text>참고 :  </Text>
+        <Text> https://fe-developers.kakaoent.com/2022/220830-simple-canvas-game/ </Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CSS</FooterText>
       </Section>
+
       <Section
         bgColor="#E8F5E9"
         bgImage="/img/main_img/BubbleComponent/bubble_hover.png"
@@ -231,6 +309,7 @@ const Main = () => {
         <Text>스트레스 받을 때 미친듯한 마우스로 한번 풀어보세용..ㅎ.ㅎ..</Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 1일<br />사용된 기능: React | JS | CANVASS</FooterText>
       </Section>
+
       <Section
         reverse
         bgColor="#FFF9C4"
@@ -246,6 +325,7 @@ const Main = () => {
         <Text>저희는 이용자들이 키보드 워리어가 되는걸 바라지 않아요...!</Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CSS</FooterText>
       </Section>
+
       <Section
         bgColor="#e2b8ec"
         bgImage="/img/main_img/minebg.png"
@@ -259,6 +339,7 @@ const Main = () => {
         <Text>재미있게 즐겨보세요~</Text>
         <FooterText>제작자: 김경환, 김지연<br />제작 소요 기간: 5일<br />사용된 기능: React | JS | CANVASS</FooterText>
       </Section>
+
       <Footer>
         <Text>만든사람 : 김경환, 김지연</Text>
         <Text>사용 기술: React | JS | 머...다 있겠지...</Text>
