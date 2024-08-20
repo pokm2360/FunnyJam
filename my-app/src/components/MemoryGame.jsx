@@ -88,14 +88,14 @@ const Card = styled.li`
 
 const MemoryGame = () => {
     const initialImages = [
-        "bonobono01.jpg",
-        "jjang901.jpg",
+        "bonobono01.png",
+        "jjang901.png",
         "keroro01.png",
         "mococo01.png",
-        "pikapika01.jpg",
+        "pikapika01.png",
         "sleep01.png",
         "tamama01.png",
-        "water01.jpg",
+        "water01.png",
     ];
 
     const [shuffledImages, setShuffledImages] = useState([]); // 이미지 배열을 상태로 저장
